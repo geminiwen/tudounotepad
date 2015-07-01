@@ -8,7 +8,9 @@ import android.view.MenuItem;
 
 import org.lifefortheorc.tudounotepad.R;
 
-
+/**
+ * 这是应用主界面。
+ */
 public class MainActivity extends Activity {
 
     @Override
