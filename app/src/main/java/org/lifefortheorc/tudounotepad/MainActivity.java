@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+/**
+ * 这是应用主界面。
+ */
 public class MainActivity extends Activity {
 
     @Override
