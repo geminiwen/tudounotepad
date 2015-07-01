@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/TudouNotepadActionBarStyle</item>
+    </style>
+
+</resources>

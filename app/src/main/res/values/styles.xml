@@ -1,8 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.Light">
-        <!-- Customize your theme here. -->
+    <style name="TudouNotepadActionBarStyle" parent="android:Widget.Material.ActionBar.Solid">
+        <item name="android:elevation">0dp</item>
     </style>
-
 </resources>
