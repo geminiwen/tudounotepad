@@ -1,9 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/TudouNotepadActionBarStyle</item>
+        <item name="android:colorPrimary">#FF9800</item>
+        <item name="android:colorPrimaryDark">#F57C00</item>
+        <item name="android:colorAccent">#F50057</item>
+
+        <item name="colorAccent">?android:attr/colorAccent</item>
+        <item name="colorControlHighlight">?android:attr/colorControlHighlight</item>
     </style>
 
 </resources>

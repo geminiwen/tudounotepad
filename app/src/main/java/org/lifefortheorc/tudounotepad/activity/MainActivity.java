@@ -1,10 +1,7 @@
 package org.lifefortheorc.tudounotepad.activity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import org.lifefortheorc.tudounotepad.R;
 
@@ -22,6 +19,5 @@ public class MainActivity extends Activity {
     @Override
     public void onContentChanged() {
         super.onContentChanged();
-        ActionBar actionBar = getActionBar();
     }
 }
