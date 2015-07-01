@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.lifefortheorc.tudounotepad.R;
+
 /**
  * 这是应用主界面。
  */
