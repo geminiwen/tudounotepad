@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +41,8 @@ public class EditActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        mEditTextContent.setTransitionName("content");
+
         Intent intent = getIntent();
         long id = intent.getLongExtra("id", -1l);
         if (id != -1l) {
@@ -66,6 +69,10 @@ public class EditActivity extends Activity {
                 mNote.setTime(System.currentTimeMillis());
                 mNote.setContent(content);
                 mNote.save();
+
+                if(TextUtils.isEmpty(content)) {
+                    mNote.delete();
+                }
 
                 TudouToast.show(R.string.toast_save_success);
                 this.finish();

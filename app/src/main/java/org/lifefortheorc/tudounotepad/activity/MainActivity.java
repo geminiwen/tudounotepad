@@ -2,10 +2,12 @@ package org.lifefortheorc.tudounotepad.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.TextView;
 
 import org.lifefortheorc.tudounotepad.R;
@@ -51,6 +53,14 @@ public class MainActivity extends Activity {
         mRecyclerNote.setEmptyView(mTextViewEmpty);
 
 
+        mAddBtn.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                int width = view.getWidth();
+                int height = view.getHeight();
+                outline.setOval(0, 0, width, height);
+            }
+        });
     }
 
     @Override

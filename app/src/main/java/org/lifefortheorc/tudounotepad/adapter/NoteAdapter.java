@@ -1,5 +1,7 @@
 package org.lifefortheorc.tudounotepad.adapter;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -83,7 +85,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             long id = note.getId();
             Intent intent = new Intent(mContext, EditActivity.class);
             intent.putExtra("id", id);
-            mContext.startActivity(intent);
+            mContext.startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation((Activity)mContext,
+                    v, "content").toBundle());
         }
     }
 
