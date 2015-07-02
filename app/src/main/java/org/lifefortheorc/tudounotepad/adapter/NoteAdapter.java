@@ -59,6 +59,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         viewHolder.mTextViewTitle.setText(dateFormat.format(time));
     }
 
+    public void remove(int position) {
+        NoteModel note = this.noteList.get(position);
+        note.delete();
+        this.noteList.remove(position);
+    }
+
     @Override
     public int getItemCount() {
         return noteList.size();
@@ -85,9 +91,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             long id = note.getId();
             Intent intent = new Intent(mContext, EditActivity.class);
             intent.putExtra("id", id);
+            ActivityOptions options =  ActivityOptions.makeSceneTransitionAnimation((Activity) mContext,
+                    v, "content");
             mContext.startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation((Activity)mContext,
-                    v, "content").toBundle());
+                    options.toBundle());
         }
     }
 
