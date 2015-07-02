@@ -63,6 +63,11 @@ public class EditActivity extends Activity {
             case R.id.save: {
                 String content = mEditTextContent.getText().toString();
 
+                if (TextUtils.isEmpty(content)) {
+                    TudouToast.show(R.string.no_content_no_save);
+                    return true;
+                }
+
                 if (mNote == null) {
                     mNote = new NoteModel();
                 }
