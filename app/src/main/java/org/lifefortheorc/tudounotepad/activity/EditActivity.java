@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -59,6 +60,11 @@ public class EditActivity extends Activity {
             }
             case R.id.save: {
                 String content = mEditTextContent.getText().toString();
+
+                if (TextUtils.isEmpty(content)) {
+                    TudouToast.show(R.string.no_content_no_save);
+                    return true;
+                }
 
                 if (mNote == null) {
                     mNote = new NoteModel();
