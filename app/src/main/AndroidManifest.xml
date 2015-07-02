@@ -9,6 +9,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:icon="@mipmap/ic_launcher"
             android:name=".activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
