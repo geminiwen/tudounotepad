@@ -7,7 +7,11 @@
         <item name="android:colorPrimary">#FF9800</item>
         <item name="android:colorPrimaryDark">#F57C00</item>
         <item name="android:colorAccent">#F50057</item>
+        <item name="android:textColorPrimary">#000</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:selectableItemBackgroundBorderless">
+            @drawable/ripple_selector
+        </item>
 
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="colorControlHighlight">?android:attr/colorControlHighlight</item>
