@@ -41,6 +41,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        handleSend(intent);
+    }
+
+    private void handleSend(Intent intent) {
+        String action = intent.getAction();
+        if (action.equals(Intent.ACTION_SEND)) {
+            String content = intent.getStringExtra(Intent.EXTRA_TEXT);
+            long time = System.currentTimeMillis();
+            NoteModel note = new NoteModel();
+            note.setContent(content);
+            note.setTime(time);
+            note.save();
+        }
     }
 
     @Override
