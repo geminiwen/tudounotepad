@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import org.lifefortheorc.tudounotepad.R;
 import org.lifefortheorc.tudounotepad.activity.EditActivity;
+import org.lifefortheorc.tudounotepad.activity.ViewActivity;
 import org.lifefortheorc.tudounotepad.model.NoteModel;
 
 import java.text.SimpleDateFormat;
@@ -70,7 +71,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         return noteList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+                                                                       View.OnLongClickListener{
         @Bind(R.id.tv_title)
         public TextView mTextViewTitle;
         @Bind(R.id.tv_content)
@@ -80,10 +82,23 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            int position = this.getAdapterPosition();
+            NoteModel note = noteList.get(position);
+
+
+            long id = note.getId();
+            Intent intent = new Intent(mContext, ViewActivity.class);
+            intent.putExtra("id", id);
+            mContext.startActivity(intent);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
             int position = this.getAdapterPosition();
             NoteModel note = noteList.get(position);
 
@@ -95,6 +110,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                     v, "content");
             mContext.startActivity(intent,
                     options.toBundle());
+
+            return true;
         }
     }
 
