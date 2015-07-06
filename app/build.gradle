@@ -6,10 +6,26 @@ repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def signKeyAlias = properties.getProperty("release.keyAlias")
+def signKeyPassword = properties.getProperty("release.keyPassword")
+def signStoreFile = file(properties.getProperty("release.storeFile"))
+def signStorePassword = properties.getProperty("release.storePassword")
+
+
 android {
+    signingConfigs {
+        gemini {
+            keyAlias signKeyAlias
+            keyPassword signKeyPassword
+            storeFile signStoreFile
+            storePassword signStorePassword
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "org.lifefortheorc.tudounotepad"
         minSdkVersion 21
@@ -21,13 +37,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.gemini
         }
     }
-
     lintOptions {
         disable 'InvalidPackage'
     }
-
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
