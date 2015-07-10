@@ -14,7 +14,7 @@ import org.lifefortheorc.tudounotepad.model.NoteModel
  * Created by geminiwen on 15/7/10.
  */
 public class ViewActivity(): Activity() {
-    var mTextViewContent: TextView? = null
+    var textViewContent: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -27,9 +27,9 @@ public class ViewActivity(): Activity() {
         val actionBar = getActionBar()
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        mTextViewContent = findViewById(R.id.tv_content) as TextView
+        textViewContent = findViewById(R.id.tv_content) as TextView
 
-        mTextViewContent?.setTransitionName("content")
+        textViewContent?.setTransitionName("content")
 
         val intent = getIntent()
         val id = intent.getLongExtra("id", -1L)
@@ -41,11 +41,11 @@ public class ViewActivity(): Activity() {
 
         val note = NoteModel.queryById(id)
         val content = note.getContent()
-        mTextViewContent?.setText(content)
+        textViewContent?.setText(content)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item!!.getItemId()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.getItemId()
         when (id) {
             android.R.id.home -> {
                 this.finish()
