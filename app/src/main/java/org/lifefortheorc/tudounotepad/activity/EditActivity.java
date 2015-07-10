@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,6 +50,7 @@ public class EditActivity extends Activity {
             mNote = NoteModel.queryById(id);
             String content = mNote.getContent();
             mEditTextContent.setText(content);
+            mEditTextContent.requestFocus();
         }
     }
 
