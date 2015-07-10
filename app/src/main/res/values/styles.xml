@@ -3,4 +3,8 @@
     <style name="TudouNotepadActionBarStyle" parent="android:Widget.Material.ActionBar.Solid">
         <item name="android:elevation">2dp</item>
     </style>
+
+    <style name="CustomEditTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#FF9800</item>
+    </style>
 </resources>
