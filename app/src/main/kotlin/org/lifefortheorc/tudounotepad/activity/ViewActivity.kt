@@ -16,8 +16,8 @@ import org.lifefortheorc.tudounotepad.model.NoteModel
 public class ViewActivity(): Activity() {
     var textViewContent: TextView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view)
     }
 
