@@ -28,6 +28,7 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_edit" />
 
+
         <activity android:name=".activity.ViewActivity"
             android:screenOrientation="portrait"
             />
