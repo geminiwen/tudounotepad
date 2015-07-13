@@ -42,4 +42,12 @@ public data class NoteModel() : BaseModel(){
         }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other !is NoteModel) {
+            return false
+        }
+
+        val id = other.getId()
+        return id == this.getId()
+    }
 }
