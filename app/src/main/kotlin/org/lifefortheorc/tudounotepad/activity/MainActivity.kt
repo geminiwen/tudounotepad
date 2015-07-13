@@ -78,8 +78,8 @@ public class MainActivity(): Activity(), View.OnClickListener {
         mNoteAdapter?.notifyDataSetChanged()
     }
 
-    override fun onStop() {
-        super<Activity>.onStop()
+    override fun onPause() {
+        super<Activity>.onPause()
         mNoteAdapter?.closeAllItems()
     }
 
