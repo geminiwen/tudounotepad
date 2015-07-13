@@ -59,7 +59,7 @@ public class NoteAdapter(val context: Context): RecyclerSwipeAdapter<NoteAdapter
 
     public fun setNoteList(list: List<NoteModel>) {
         noteList.clear()
-        noteList.addAll(listd)
+        noteList.addAll(list)
     }
 
     public inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
