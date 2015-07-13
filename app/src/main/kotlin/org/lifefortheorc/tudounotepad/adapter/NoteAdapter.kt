@@ -17,6 +17,7 @@ import org.lifefortheorc.tudounotepad.activity.ViewActivity
 import org.lifefortheorc.tudounotepad.model.NoteModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.platform.platformStatic
 
 /**
  * Created by geminiwen on 15/7/13.
@@ -24,7 +25,10 @@ import java.util.*
 
 public class NoteAdapter(val context: Context): RecyclerSwipeAdapter<NoteAdapter.ViewHolder> () {
 
-    val dateFormat = SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+    companion object {
+        platformStatic val dateFormat = SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+    }
+    
     val noteList: MutableList<NoteModel>
 
     init {
