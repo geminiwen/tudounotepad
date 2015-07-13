@@ -75,6 +75,7 @@ public class MainActivity(): Activity(), View.OnClickListener {
         super<Activity>.onResume()
         var noteList = NoteModel.queryNoteList()
         mNoteAdapter?.setNoteList(noteList)
+        mNoteAdapter?.closeAllItems()
         mNoteAdapter?.notifyDataSetChanged()
     }
 
