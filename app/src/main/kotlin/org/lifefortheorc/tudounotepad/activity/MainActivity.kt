@@ -75,8 +75,12 @@ public class MainActivity(): Activity(), View.OnClickListener {
         super<Activity>.onResume()
         var noteList = NoteModel.queryNoteList()
         mNoteAdapter?.setNoteList(noteList)
-        mNoteAdapter?.closeAllItems()
         mNoteAdapter?.notifyDataSetChanged()
+    }
+
+    override fun onStop() {
+        super<Activity>.onStop()
+        mNoteAdapter?.closeAllItems()
     }
 
     override fun onClick(view: View?) {
