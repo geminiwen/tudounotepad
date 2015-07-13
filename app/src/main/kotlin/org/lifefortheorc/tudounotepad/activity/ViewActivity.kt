@@ -40,7 +40,7 @@ public class ViewActivity(): Activity() {
         }
 
         val note = NoteModel.queryById(id)
-        val content = note.getContent()
+        val content = note.content
         textViewContent?.setText(content)
     }
 

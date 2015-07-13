@@ -14,6 +14,7 @@ import android.view.ViewOutlineProvider
 import android.widget.TextView
 import org.lifefortheorc.tudounotepad.R
 import org.lifefortheorc.tudounotepad.adapter.NoteAdapter
+import org.lifefortheorc.tudounotepad.model.BaseModel
 import org.lifefortheorc.tudounotepad.model.NoteModel
 import org.lifefortheorc.tudounotepad.widget.EmptyRecyclerView
 
@@ -39,8 +40,8 @@ public class MainActivity(): Activity(), View.OnClickListener {
             var content = intent.getStringExtra(Intent.EXTRA_TEXT)
             var time = System.currentTimeMillis()
             var note = NoteModel()
-            note.setContent(content)
-            note.setTime(time)
+            note.content = content
+            note.time =time
             note.save()
         }
     }

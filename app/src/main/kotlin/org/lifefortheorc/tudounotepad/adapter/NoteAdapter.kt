@@ -49,8 +49,8 @@ public class NoteAdapter(val context: Context): RecyclerSwipeAdapter<NoteAdapter
 
         val note = noteList.get(p1);
 
-        val content = note.getContent();
-        val time = note.getTime();
+        val content = note.content;
+        val time = note.time;
 
         mItemManger.bindView(viewHolder?.mSwipeLayout, p1);
         viewHolder?.mTextViewContent?.setText(content);

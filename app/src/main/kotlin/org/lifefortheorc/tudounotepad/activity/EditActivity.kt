@@ -39,7 +39,7 @@ public class EditActivity(): Activity() {
         var id = intent.getLongExtra("id", -1L)
         if (id != -1L) {
             mNote = NoteModel.queryById(id)
-            var content = mNote.getContent()
+            var content = mNote.content
             mEditText?.setText(content)
             mEditText?.requestFocus()
         }
@@ -59,8 +59,8 @@ public class EditActivity(): Activity() {
                     return true
                 }
 
-                mNote.setTime(System.currentTimeMillis())
-                mNote.setContent(content)
+                mNote.time = System.currentTimeMillis()
+                mNote.content = content
                 mNote.save()
 
                 if (TextUtils.isEmpty(content)) {
