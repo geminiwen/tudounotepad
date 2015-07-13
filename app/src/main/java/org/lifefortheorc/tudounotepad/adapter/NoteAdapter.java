@@ -60,59 +60,63 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         viewHolder.mTextViewTitle.setText(dateFormat.format(time));
     }
 
-    public void remove(int position) {
-        NoteModel note = this.noteList.get(position);
-        note.delete();
-        this.noteList.remove(position);
-    }
 
     @Override
     public int getItemCount() {
         return noteList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
-                                                                       View.OnLongClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.tv_title)
         public TextView mTextViewTitle;
         @Bind(R.id.tv_content)
         public TextView mTextViewContent;
+        @Bind(R.id.layout_content)
+        public View mLayoutContent;
+        @Bind(R.id.tv_edit)
+        public View mViewEditAction;
+        @Bind(R.id.tv_delete)
+        public View mViewDeleteAction;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
+            mLayoutContent.setOnClickListener(this);
+            mViewEditAction.setOnClickListener(this);
+            mViewDeleteAction.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            int id = v.getId();
             int position = this.getAdapterPosition();
             NoteModel note = noteList.get(position);
+            switch (id) {
+                case R.id.layout_content: {
 
+                    long noteId = note.getId();
+                    Intent intent = new Intent(mContext, ViewActivity.class);
+                    intent.putExtra("id", noteId);
+                    mContext.startActivity(intent);
+                    break;
+                }
+                case R.id.tv_edit: {
+                    long noteId = note.getId();
+                    Intent intent = new Intent(mContext, EditActivity.class);
+                    intent.putExtra("id", noteId);
+                    mContext.startActivity(intent);
+                    break;
+                }
+                case R.id.tv_delete: {
+                    note.delete();
+                    noteList.remove(position);
+                    notifyItemRemoved(position);
+                    break;
+                }
+            }
 
-            long id = note.getId();
-            Intent intent = new Intent(mContext, ViewActivity.class);
-            intent.putExtra("id", id);
-            mContext.startActivity(intent);
         }
 
-        @Override
-        public boolean onLongClick(View v) {
-            int position = this.getAdapterPosition();
-            NoteModel note = noteList.get(position);
-
-
-            long id = note.getId();
-            Intent intent = new Intent(mContext, EditActivity.class);
-            intent.putExtra("id", id);
-            ActivityOptions options =  ActivityOptions.makeSceneTransitionAnimation((Activity) mContext,
-                    v, "content");
-            mContext.startActivity(intent,
-                    options.toBundle());
-
-            return true;
-        }
     }
 
 }

@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:contentPaddingTop="16dp"
-    app:contentPaddingBottom="16dp"
-    app:contentPaddingLeft="16dp"
-    app:contentPaddingRight="16dp"
     android:foreground="?android:attr/selectableItemBackground">
 
 
-    <LinearLayout
+    <com.daimajia.swipe.SwipeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-        <TextView
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="#f00"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:id="@+id/tv_edit"
+                android:text="编辑" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="?android:attr/colorPrimary"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:id="@+id/tv_delete"
+                android:text="删除"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_title"
-            android:textSize="14sp"
-            android:textColor="?android:attr/textColorPrimary" />
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:id="@+id/layout_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:id="@+id/tv_content"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
 
 </android.support.v7.widget.CardView>

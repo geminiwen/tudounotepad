@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 import java.util.List;
@@ -44,6 +45,10 @@ public class NoteModel extends BaseModel {
     public static NoteModel queryById(long id) {
         return new Select().from(NoteModel.class)
                            .where("Id = ?", id).executeSingle();
+    }
+
+    public static NoteModel deleteById(long id) {
+        return new Delete().from(NoteModel.class).where("Id = ?", id).executeSingle();
     }
 
     @Override
