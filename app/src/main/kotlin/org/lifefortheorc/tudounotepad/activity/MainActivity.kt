@@ -57,7 +57,7 @@ public class MainActivity(): Activity(), View.OnClickListener {
         mNoteAdapter = NoteAdapter(this)
         mRecyclerNote?.setLayoutManager(LinearLayoutManager(this))
         mRecyclerNote?.setAdapter(mNoteAdapter)
-        mRecyclerNote?.setEmptyView(mTextViewEmpty)
+        mRecyclerNote?.setEmptyView(mTextViewEmpty!!)
 
         /**
          * 为添加按钮描边
