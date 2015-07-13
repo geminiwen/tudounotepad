@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+import com.daimajia.swipe.util.Attributes;
+
 import org.lifefortheorc.tudounotepad.R;
 import org.lifefortheorc.tudounotepad.activity.EditActivity;
 import org.lifefortheorc.tudounotepad.activity.ViewActivity;
@@ -25,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * Created by geminiwen on 15/7/2.
  */
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
+public class NoteAdapter extends RecyclerSwipeAdapter<NoteAdapter.ViewHolder> {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 
@@ -35,6 +39,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public NoteAdapter(Context ctx) {
         this.noteList = new ArrayList<>();
         this.mContext = ctx;
+        this.mItemManger.setMode(Attributes.Mode.Single);
     }
 
     public void setNoteList(List<NoteModel> noteList) {
@@ -56,8 +61,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         String content = note.getContent();
         long time = note.getTime();
 
+        mItemManger.bindView(viewHolder.mSwipeLayout, position);
         viewHolder.mTextViewContent.setText(content);
         viewHolder.mTextViewTitle.setText(dateFormat.format(time));
+
     }
 
 
@@ -77,6 +84,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         public View mViewEditAction;
         @Bind(R.id.tv_delete)
         public View mViewDeleteAction;
+        @Bind(R.id.swipe)
+        public SwipeLayout mSwipeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +93,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             mLayoutContent.setOnClickListener(this);
             mViewEditAction.setOnClickListener(this);
             mViewDeleteAction.setOnClickListener(this);
+
+
         }
 
         @Override
@@ -119,4 +130,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     }
 
+
+    @Override
+    public int getSwipeLayoutResourceId(int i) {
+        return R.id.swipe;
+    }
 }
