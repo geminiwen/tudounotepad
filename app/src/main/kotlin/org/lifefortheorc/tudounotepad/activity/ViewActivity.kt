@@ -1,19 +1,16 @@
 package org.lifefortheorc.tudounotepad.activity
 
-import android.app.Activity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.MenuItem
 import android.widget.TextView
-import butterknife.Bind
-import butterknife.ButterKnife
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 import org.lifefortheorc.tudounotepad.R
 import org.lifefortheorc.tudounotepad.model.NoteModel
 
 /**
  * Created by geminiwen on 15/7/10.
  */
-public class ViewActivity(): Activity() {
+public class ViewActivity(): SwipeBackActivity() {
     var textViewContent: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

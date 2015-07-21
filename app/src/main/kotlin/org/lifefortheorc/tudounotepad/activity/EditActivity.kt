@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.EditText
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 import org.lifefortheorc.tudounotepad.R
 import org.lifefortheorc.tudounotepad.model.NoteModel
 import org.lifefortheorc.tudounotepad.widget.TudouToast
@@ -17,7 +18,7 @@ import org.lifefortheorc.tudounotepad.widget.TudouToast
  * 编辑页面
  * Created by Anchorer/duruixue on 2015/7/13.
  */
-public class EditActivity(): Activity() {
+public class EditActivity(): SwipeBackActivity() {
     var mEditText: EditText? = null
     var mNote = NoteModel()
 
