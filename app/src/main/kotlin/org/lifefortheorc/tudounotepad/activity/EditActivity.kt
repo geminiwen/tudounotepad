@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.EditText
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 import org.lifefortheorc.tudounotepad.R
+import org.lifefortheorc.tudounotepad.base.BaseSwipeActivity
 import org.lifefortheorc.tudounotepad.model.NoteModel
 import org.lifefortheorc.tudounotepad.widget.TudouToast
 
@@ -18,7 +19,7 @@ import org.lifefortheorc.tudounotepad.widget.TudouToast
  * 编辑页面
  * Created by Anchorer/duruixue on 2015/7/13.
  */
-public class EditActivity(): SwipeBackActivity() {
+public class EditActivity(): BaseSwipeActivity() {
     var mEditText: EditText? = null
     var mNote = NoteModel()
 
@@ -49,10 +50,6 @@ public class EditActivity(): SwipeBackActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var id = item.getItemId()
         when (id) {
-            android.R.id.home -> {
-                this.finish()
-                return true
-            }
             R.id.save -> {
                 var content = mEditText?.getText().toString()
                 if (TextUtils.isEmpty(content)) {
@@ -69,7 +66,7 @@ public class EditActivity(): SwipeBackActivity() {
                 }
 
                 TudouToast.show(R.string.toast_save_success)
-                this.finish()
+                onBack()
                 return true
             }
         }

@@ -93,7 +93,6 @@ public class NoteAdapter(val context: Context): RecyclerSwipeAdapter<NoteAdapter
             val note = noteList.get(position)
             when (id) {
                 R.id.layout_content -> {
-
                     val noteId = note.getId()!!
                     val intent = Intent(context, javaClass<ViewActivity>())
                     intent.putExtra("id", noteId)

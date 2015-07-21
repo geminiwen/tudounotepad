@@ -3,14 +3,16 @@ package org.lifefortheorc.tudounotepad.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
+import me.imid.swipebacklayout.lib.SwipeBackLayout
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 import org.lifefortheorc.tudounotepad.R
+import org.lifefortheorc.tudounotepad.base.BaseSwipeActivity
 import org.lifefortheorc.tudounotepad.model.NoteModel
 
 /**
  * Created by geminiwen on 15/7/10.
  */
-public class ViewActivity(): SwipeBackActivity() {
+public class ViewActivity(): BaseSwipeActivity() {
     var textViewContent: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,13 +43,4 @@ public class ViewActivity(): SwipeBackActivity() {
         textViewContent?.setText(content)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.getItemId()
-        when (id) {
-            android.R.id.home -> {
-                this.finish()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }
